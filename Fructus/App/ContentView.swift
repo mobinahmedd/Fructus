@@ -10,13 +10,17 @@ import SwiftUI
 struct ContentView: View {
     // MARK: - PROPERTIES
     @AppStorage("onboarding") private var isOnboardingViewActive: Bool = false
+    @AppStorage("settings") private var isShowingSettings: Bool = false
     let fruits : [Fruit] = fruitsData
     
     var body: some View {
+        
         NavigationStack {
             List(){
                 ForEach(fruits.shuffled()){fruit in
-                    FruitRowView(fruit: fruit)
+                    NavigationLink(destination: FruitDetailView(fruit: fruit)){
+                        FruitRowView(fruit: fruit)
+                    }
                 }
             }
             .padding(.horizontal,-8)
@@ -33,13 +37,10 @@ struct ContentView: View {
                     }),
                 trailing:
                     Button(action: {
-                        //                        isShowingSettings = true
+                        isShowingSettings = true
                     }) {
                         Image(systemName: "slider.horizontal.3")
-                    } //: BUTTON
-                //                    .sheet(isPresented: $isShowingSettings) {
-                //                        SettingsView()
-                //                    }
+                    }
             )
         }
         

@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    var fruit : Fruit
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            ScrollView(.vertical,showsIndicators: false){
+                VStack(spacing: 20, content: {
+                    Text("Placeholder")
+                })//: VSTACK
+                .navigationTitle("Settings")
+                .navigationBarItems(
+                    trailing:
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Image(systemName: "xmark")
+                        })
+                )
+            }
+        }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(fruit: fruitsData[3])
 }

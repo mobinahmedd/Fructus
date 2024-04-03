@@ -42,10 +42,6 @@ struct FruitRowView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
             }//: VStack
-            
-            Spacer()
-            
-            Image(systemName: "chevron.right")
         }//: HSTACK
          //        .padding(.horizontal)
         .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/,maxWidth: .infinity,alignment: .center)
