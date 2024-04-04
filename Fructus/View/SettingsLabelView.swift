@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct SettingsLabelView: View {
+    var labelText : String
+    var labelIcon : String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Text(labelText.uppercased())
+            Spacer()
+            Image(systemName: labelIcon)
+        }
+        .bold()
     }
 }
 
 #Preview {
-    SettingsLabelView()
+    SettingsLabelView(labelText: "Fructus", labelIcon: "info.circle")
 }

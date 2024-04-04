@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     // MARK: - PROPERTIES
+    @State private var isShowingSettingsSheet: Bool = false
     @AppStorage("onboarding") private var isOnboardingViewActive: Bool = false
-    @AppStorage("settings") private var isShowingSettings: Bool = false
     let fruits : [Fruit] = fruitsData
     
     var body: some View {
@@ -37,10 +37,13 @@ struct ContentView: View {
                     }),
                 trailing:
                     Button(action: {
-                        isShowingSettings = true
+                        isShowingSettingsSheet = true
                     }) {
                         Image(systemName: "slider.horizontal.3")
-                    }
+                    }.sheet(isPresented: $isShowingSettingsSheet, content: {
+                        SettingsView()
+                            .presentationDragIndicator(.hidden)
+                    })
             )
         }
         
